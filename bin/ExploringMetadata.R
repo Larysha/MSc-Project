@@ -91,30 +91,3 @@ write.table(hMDAMB231, "hMDAMB231_2.tsv", sep = "\t", quote = F) ### read into n
 ## Individually go through each file's metadata: treatment and controls. 
   ## Many of the treatments have to be manually referenced using the SRX and GSM accession numbers
 
-## Example commands for exploring the data 
-
- ## pull out all unique treatment types
-unique(hMCF7$Treatment)
-## find out how many samples were treated with Estrogen 
-sum(hMCF7$treatment=="Estrogen") 
- ## Pull out the row index for each sample treated with 4OHT
-grep("4OHT", hMCF7$treatment)
-
-
-
-  
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-
-
-
-
