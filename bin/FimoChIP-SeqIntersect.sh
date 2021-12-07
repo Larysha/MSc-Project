@@ -9,15 +9,6 @@
 
 bedtools intersect -a fimo.bed -b tfHMECfimo.bed -wo -f 0.30 > tfHMECknownTFBS.bed
 
-
 bedtools intersect -a fimo.bed -b tfMCF7fimo.bed -wo -f 0.30 > tfMCF7knownTFBS.bed
 
-
 bedtools intersect -a fimo.bed -b tfMDAMB231fimo.bed -wo -f 0.30 > tfMDAMB231knownTFBS.bed
-
-
-
-
-
-
-
