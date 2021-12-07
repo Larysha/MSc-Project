@@ -7,10 +7,13 @@ wget --timestamping 'ftp://hgdownload.cse.ucsc.edu/goldenPath/hg19/chromosomes/c
 gunzip -k chr2.fa.gz
 
 # assign the coordinate files to a variable
+
 files="*.bed"
 
 # loop through the files to retain only the 1st 3 columns and remove the header
 # the files are then ready for bedtools to retrieve the fasta sequences
+
+
 for file in $files; do
 cut -f 1,2,3 $file | sed '1d' > $file.cut
 bedtools getfasta -fi chr2.fa -bed $file.cut -fo "$file".fa;
@@ -30,5 +33,3 @@ done
 #files="*.cut.bed"
 
 #for file in $files; do bedtools getfasta -fi chr2.fa -bed $file -fo "$file".fa; done
-
-
