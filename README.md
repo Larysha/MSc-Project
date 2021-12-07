@@ -1,6 +1,6 @@
 # ChIP-Seq Downstream Analysis
 
-This project aims to understand the mechanism of regulation of the *PXDN* gene in breast cancer. Specifically, to identify the transcription factors (TF) and histone modifications (HM), acetylation and methylation in particular, regulating *PXDN* expression and the *PXDN* chromatin state respectively in MCF-7, MDA-MB-231 and HMEC cell lines.
+This project aims to understand the mechanism of regulation of the *PXDN* gene in breast cancer. Specifically to identify the transcription factors (TF) and histone modifications (HM) (acetylation and methylation in particular) regulating *PXDN* expression and the *PXDN* chromatin state respectively in MCF-7, MDA-MB-231 and HMEC cell lines.
 
 ### The following objectives were set to achieve this:
 
