@@ -8,7 +8,7 @@ library(dplyr)
 library(GenomicRanges)
   
    
-# Read in the ChIP-Seq data - pre-filtered in Bedtools to contain the region specific to PXDN chr2	1655000	1760000 # nolint
+# Read in the ChIP-Seq data - pre-filtered in Bedtools to contain the region specific to PXDN chr2:1655000,1760000
 # create a list called temp containing all bed files in the work directory. 
 temp = list.files(pattern = ".*.bed")
 
@@ -18,11 +18,11 @@ for (i in 1:length(temp))
 
 
   
-  ### The full files have duplicated columns (4-7) that need to be removed. Re-write those # nolint
-  ### files into the correct format and give the variables descriptive (and shorter) names to keep track of them # nolint
+  ### The full files have duplicated columns (4-7) that need to be removed. Re-write those 
+  ### files into the correct format and give the variables descriptive (and shorter) names to keep track of them 
   
-  histone_HMEC.bed <- filtered_full_histone_HMEC.bed # nolint
-  %>% dplyr::select(!c(V4:V6, V9:V12)) # nolint
+  histone_HMEC.bed <- filtered_full_histone_HMEC.bed 
+  %>% dplyr::select(!c(V4:V6, V9:V12)) 
   histone_HMEC.bed <- na.omit(histone_HMEC.bed)
   histone_MCF_7.bed <- filtered_full_histone_MCF_7.bed %>% dplyr::select(!c(V4:V6,V9:V12))
   histone_MCF_7.bed <- na.omit(histone_MCF_7.bed)
