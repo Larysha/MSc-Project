@@ -21,20 +21,6 @@ my $row = $csv->getline(*ARGV);
 # included in the output.
 #
 my $md_headers = extract_metadata_headers($$row[4]);
-#
-# If this is not the case, then delete the extract_metadata_headers
-# subroutine and define the metadata fields manually with something
-# like:
-#
-#my $md_headers = [
-#  'ID', 'Name', 'Title', 'Cell group', 'source_name',
-#  'biomaterial_provider', 'lab', 'lab description', 'datatype',
-#  'datatype description', 'cell organism', 'cell description',
-#  'cell karyotype', 'cell lineage', 'cell sex',
-#  'antibody antibodydescription'
-#];
-# This defines both the extra metadata headers **and** the order
-# that they will be included in each output row.
 
 # extract the data from the metadata field
 my $md_data = extract_metadata($$row[4]);
