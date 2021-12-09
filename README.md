@@ -54,7 +54,6 @@ Filtering example:
 ``` sh
 bedtools intersect -wb -a regionPxdn.bed -b Histone_HMEC.bed > ~/Masters/data/work/Filtered_Histone_HMEC.bed
 ```
-Full script: `pxdnExtract.sh` 
 
 
 ## 2.1. Annotation in R with ChIPseeker
