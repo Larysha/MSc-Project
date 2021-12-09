@@ -24,15 +24,12 @@ The FIMO tool - accessed through meme-5.3.3 - was used to scan the PXDN promoter
 fimo --parse-genomic-coord VertebrateMotifs.meme PxdnPromoter.fasta
 ```
 
-Full script: `fimo.sh`
-
 The `--parse-genomic-coord` option ensures that the output file gives the matching patterns as genomic coordinates and not relative to the first base of the promoter, which is the default setting.
 
-It is also useful to note that this command only runs from the project directory when meme is added to the system bin. This can be done by editing your `.profile file` to include the following line: `export PATH=/home/username/meme/bin:/home/username/meme/libexec/meme-5.3.3:$PATH`
+It is also useful to note that this command only runs from the project directory when meme is added to the system bin. This can be done by editing your `.profile file` to include the following line: `export PATH=/home/username/meme/bin:/home/username/meme/libexec/meme-5.3.3:$PATH` Note that the path will be specific to where you have saved the meme application, the meme version number and your own username.
 
 FIMO produces five output files, by default. The matches are sorted in order of decreasing statistical significance (increasing p-value). The fimo.tsv file was read into `R-4.1.0` and converted into BED file format using the package dplyr, according to the format outlined by the UCSC.
 
-Full script: `fimoTSVtoBED.R`
 
 # Objective 2
 
