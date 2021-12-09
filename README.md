@@ -26,18 +26,6 @@ fimo --parse-genomic-coord VertebrateMotifs.meme PxdnPromoter.fasta
 
 Full script: `fimo.sh`
 
-To execute a script in a Bash terminal, run:
-
-``` sh
-chmod u+x FileName.sh 
-```
-
-and then:
-
-``` sh
-./FileName.sh
-```
-
 The `--parse-genomic-coord` option ensures that the output file gives the matching patterns as genomic coordinates and not relative to the first base of the promoter, which is the default setting.
 
 It is also useful to note that this command only runs from the project directory when meme is added to the system bin. This can be done by editing your `.profile file` to include the following line: `export PATH=/home/username/meme/bin:/home/username/meme/libexec/meme-5.3.3:$PATH`
