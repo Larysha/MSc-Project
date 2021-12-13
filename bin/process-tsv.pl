@@ -6,11 +6,9 @@ use Text::CSV qw(csv);
 my $csv=Text::CSV->new({sep_char => "\t", quote_space => 0});
 
 # optional: define how to print undefined fields
-#$csv->undef_str ('--');
-#$csv->undef_str ('N/A');
 $csv->undef_str ('""');
 
-# get header line, split into an arrayref called $cols
+# get header line, split into an array ref called $cols
 my $cols = $csv->getline(*ARGV);
 
 # get first data row, extract headers & data from metadata field
@@ -26,7 +24,7 @@ my $md_headers = extract_metadata_headers($$row[4]);
 # extract the data from the metadata field
 my $md_data = extract_metadata($$row[4]);
 
-# replace the metadata header in $cols aref with the md headers
+# replace the metadata header in $cols ref with the md headers
 splice @$cols,4,1,@$md_headers;
 
 # replace the metadata field in $row aref with the md fields
