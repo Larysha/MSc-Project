@@ -117,37 +117,26 @@ Full Script: `FimoChip-SeqIntersect.sh`
 
 # Objective 3
 
-## 3.0 Data Selection and Visualisation
+## 3.0 Transcription factor binding motif analysis
 
 The data for each antigen was read into seperate files and the aligned ChIP-Seq reads were visualised with the Integrative Genomics Viewer (IGV) to see more clearly where the TFBS and HMs occur in the PXDN gene for each cell line and treatment category. The question that arose was: if an antigen peak has been shown to appear in and around PXDN in a particular cell line, but doesn’t appear for this region in another – is it because the antigen does not occur or because it has not been tested for? To answer this question, the original, genome-wide ChIP-Seq experiment files were scanned for each of the antigens in figure 4, to determine which cell lines (and under what conditions) each antigen experiment had been conducted in. Based on this, select antigens were filtered out for further analysis.
 
 
-## 3.1 De Novo Motif Analysis
+## 3.1 ChIP-Seq FIMO scan 
 
-The FIMO predictions in 2.3 resulted in no overlaps with known motifs. Thus, de novo motif analysis for each of the TFs was conducted using the MEME Suite 5.4.1, MEME and MAST tools. First, the FASTA DNA sequences corresponding to the coordinates of the ChIP-Seq peaks were downloaded.
+The FIMO predictions in 2.3 resulted in no overlaps with the known motifs. This was likely because the FIMO scan was initially restricted to the promoter and upstream regions of _PXDN_, while the ChIP-Seq data revealed that the majority of TFBS occur within the gene itself.  Thus, the FIMO scan was re-run to focus on the TFBS identified by the ChIP-Seq peaks.
 
-Full script: RetrieveFasta.sh
+First, the FASTA DNA sequences corresponding to the coordinates of the ChIP-Seq peaks were downloaded (RetriveFasta.sh). Then, the FASTA sequences were searched with FIMO, as before, based on the VertebrateMotifs.meme file from the JASPAR database. This second scan yieled 7 unique known binding motifs for the TF found to bind _PXDN_. These motifs were compared between cell lines to see if the TF that bind and regulate _PXDN_ in different cell lines or in differnt treatment condtions bind to different motifs/ in different places.
 
-Example:
-
-```sh
-meme tfHMEC_UT_NRF1.bed.fa -dna -mod anr -nmotifs 3 -minw 6 -maxw 20 -objfun classic -revcomp -markov_order 0
-
-mast meme.xml tfHMEC_UT_NRF1.bed.fa
-```
-
-## 3.2 Confirming the FIMO predictions
-
-To ensure that the there are no known motifs for the ChIP-Seq peak sequences, the FIMO scan was run again – now on the individual sequences where the TFs have been shown to bind from the ChIP-Seq data, instead of the entire PXDN promoter. 
 
 Example:
 
 ``` sh
-fimo --oc . --verbosity 1 --thresh 1.0E-4 Vertebrate_PFM_Batch tfHMEC_UT_CTCF.bed.fa
+fimo --oc . --verbosity 1 --thresh 1.0E-4 VertebrateMotifs.meme tfMCF7_UT.fa
 ```
 
-The results of this scan produced 7 unique known binding motifs in the PXDN gene for the discovered TFs.
 
+## 3.2 
 
 
 
