@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-## Note that this code has been used with permission from the author (user:7696 from Stack Exchange).
+## Note that this code has been adapted from Stack Exchange and used with permission from the author (user:7696).
 
 use strict;
 use Text::CSV qw(csv);
