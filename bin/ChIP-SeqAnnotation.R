@@ -4,8 +4,8 @@
  
 # Load the relevant packages  
 
-library(dplyr)
-library(GenomicRanges)
+# library(dplyr)
+# library(GenomicRanges)
   
    
 # Read in the ChIP-Seq data - pre-filtered in Bedtools to contain the region specific to PXDN chr2:1655000;1760000 
@@ -21,13 +21,15 @@ for (i in 1:length(temp))
   ### The full files have duplicated columns (4-7) that need to be removed. Re-write those
   ### files into the correct format and give the variables descriptive (and shorter) names to keep track of them 
   
+# Histone Modification (HM) files for each cell line
   histone_HMEC.bed <- filtered_full_histone_HMEC.bed %>% dplyr::select(!c(V4:V6, V9:V12)) 
   histone_HMEC.bed <- na.omit(histone_HMEC.bed)
   histone_MCF_7.bed <- filtered_full_histone_MCF_7.bed %>% dplyr::select(!c(V4:V6,V9:V12))
   histone_MCF_7.bed <- na.omit(histone_MCF_7.bed)
   histone_MDA_MB_231.bed <- filtered_full_histone_MDA_MB_231.bed %>% dplyr::select(!c(V4:V6,V9:V12))
   histone_MDA_MB_231.bed <- na.omit(histone_MDA_MB_231.bed)
-  
+
+# Transcription Factor (TF) files for each cell line
   TF_HMEC.bed <- filtered_full_TF_HMEC.bed %>% dplyr::select(!c(V4:V6,V9:V12))
   TF_HMEC.bed <- na.omit(TF_HMEC.bed)
   TF_MCF_7.bed <- filtered_full_TF_MCF_7.bed %>% dplyr::select(!c(V4:V6,V9:V12))
