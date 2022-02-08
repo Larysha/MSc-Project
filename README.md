@@ -80,7 +80,7 @@ cut --complement -f 9-14 input.tsv | sed 's/%20/ /g' > output.tsv
 
 Full script: `CleanMetadata.sh`
 
-Each metadata entry is read into its own column. The `Perl` tool `Text::CSV` is used for this, with the help of user user:7696 from Stack Exchange.
+Each metadata entry is read into its own column. The `Perl` tool `Text::CSV` is used for this.
 
 Full script: `process-tsv.pl`
 
