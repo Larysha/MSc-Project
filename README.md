@@ -136,7 +136,9 @@ fimo --oc . --verbosity 1 --thresh 1.0E-4 VertebrateMotifs.meme tfMCF7_UT.fa
 ```
 
 
-## 3.2 
+## 3.2 Searching for oestrogen response elements (ERE)
+
+In addition to known TFBS stored in the JASPAR database, the palindromic consensus ERE was searched for in the regions where the ER appears to bind. The FASTA DNA sequences corresponding to the ER ChIP-Seq peaks were searched for the AGGTCAnnnTGACCT conserved motif using the command line tool, grep (SearchERE.sh). There are two half sites to this motif and point mutations to either half site can decrease affinity of the ER for the ERE. Since the putative binding sites of the oestrogen receptor (ER) are already known from the ChIP-Seq analysis and given that strong ER-ERE associations require at least one perfect half site to be present in the sequence, the grep tool is sufficient to search for an exact match to either of the half sites
 
 
 
