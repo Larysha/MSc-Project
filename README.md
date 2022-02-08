@@ -126,7 +126,7 @@ The data for each antigen was read into seperate files and the aligned ChIP-Seq 
 
 The FIMO predictions in 2.3 resulted in no overlaps with the known motifs. This was likely because the FIMO scan was initially restricted to the promoter and upstream regions of _PXDN_, while the ChIP-Seq data revealed that the majority of TFBS occur within the gene itself.  Thus, the FIMO scan was re-run to focus on the TFBS identified by the ChIP-Seq peaks.
 
-First, the FASTA DNA sequences corresponding to the coordinates of the ChIP-Seq peaks were downloaded (RetriveFasta.sh). Then, the FASTA sequences were searched with FIMO, as before, based on the VertebrateMotifs.meme file from the JASPAR database. This second scan yieled 7 unique known binding motifs for the TF found to bind _PXDN_. These motifs were compared between cell lines to see if the TF that bind and regulate _PXDN_ in different cell lines or in differnt treatment condtions bind to different motifs/ in different places.
+First, the FASTA DNA sequences corresponding to the coordinates of the ChIP-Seq peaks were downloaded (`RetriveFasta.sh`). Then, the FASTA sequences were searched with FIMO, as before, based on the VertebrateMotifs.meme file from the JASPAR database. This second scan yieled 7 unique known binding motifs for the TF found to bind _PXDN_. These motifs were compared between cell lines to see if the TF that bind and regulate _PXDN_ in different cell lines or in differnt treatment condtions bind to different motifs/ in different places.
 
 
 Example:
@@ -138,7 +138,7 @@ fimo --oc . --verbosity 1 --thresh 1.0E-4 VertebrateMotifs.meme tfMCF7_UT.fa
 
 ## 3.2 Searching for oestrogen response elements (ERE)
 
-In addition to known TFBS stored in the JASPAR database, the palindromic consensus ERE was searched for in the regions where the ER appears to bind. The FASTA DNA sequences corresponding to the ER ChIP-Seq peaks were searched for the AGGTCAnnnTGACCT conserved motif using the command line tool, grep (SearchERE.sh). There are two half sites to this motif and point mutations to either half site can decrease affinity of the ER for the ERE. Since the putative binding sites of the oestrogen receptor (ER) are already known from the ChIP-Seq analysis and given that strong ER-ERE associations require at least one perfect half site to be present in the sequence, the grep tool is sufficient to search for an exact match to either of the half sites
+In addition to known TFBS stored in the JASPAR database, the palindromic consensus ERE was searched for in the regions where the oestrogen receptor (ER) appears to bind. The FASTA DNA sequences corresponding to the ER ChIP-Seq peaks were searched for the AGGTCAnnnTGACCT conserved motif using the command line tool, grep (`SearchERE.sh`). There are two half sites to this motif and point mutations to either half site can decrease affinity of the ER for the ERE. Since the putative binding sites of the ER are already known from the ChIP-Seq analysis and given that strong ER-ERE associations require at least one perfect half site to be present in the sequence, the grep tool is sufficient to search for an exact match to either of the half sites.
 
 
 
