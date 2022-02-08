@@ -1,6 +1,6 @@
-# Set working directory
+# Set working directory and load dplyr package
 
-library(dplyr)
+# library(dplyr)
 
 temp = list.files(pattern = ".*full.bed")
 
