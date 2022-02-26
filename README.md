@@ -6,9 +6,9 @@ This project aims to understand the mechanism of regulation of the *PXDN* gene i
 
 1.  To determine all potential *PXDN* TFBS, the *PXDN* promoter was scanned for known TFBS motifs (represented by matrices stored in the JASPAR database) using the MEME suite software FIMO.
 
-2.  To identify TFs, their binding sites and histone modifications within 5 000 bps of the PXDN TSS, publicly available TF and histone ChIP-Seq data was filtered and annotated (in ChIPseeker). The TF binding peaks were compared to the known TFBS identified by FIMO to determine the degree of overlap between the predicted binding sites and the ChIP-Seq peaks. De Novo motif analysis was conducted for the binding sites that weren’t predicted. 
+2.  To identify TFs, their binding sites and histone modifications within 5 000 bps UPSTREAM of the PXDN TSS, publicly available TF and histone ChIP-Seq data was filtered and annotated (in ChIPseeker). The TF binding peaks were compared to the known TFBS identified by FIMO to determine the degree of overlap between the predicted binding sites and the ChIP-Seq peaks.
 
-3.  To identify differential binding between the cell lines and overlap between the histone and TF data, Bedtools was used to compare binding peaks. This data was visualised and annotated to the PXDN promoter and surrounding region.
+3.  To compare binding between cell lines and overlap between the histone and TF data, Bedtools was used to compare binding peaks. This data was visualised and annotated to the PXDN promoter and surrounding region according to cell line and treatment type.
 
 # Objective 1
 
@@ -26,7 +26,7 @@ fimo --parse-genomic-coord VertebrateMotifs.meme PxdnPromoter.fasta
 
 The `--parse-genomic-coord` option ensures that the output file gives the matching patterns as genomic coordinates and not relative to the first base of the promoter, which is the default setting.
 
-It is also useful to note that this command only runs from the project directory when meme is added to the system bin. This can be done by editing your `.profile file` to include the following line: `export PATH=/home/username/meme/bin:/home/username/meme/libexec/meme-5.3.3:$PATH` Note that the path will be specific to where you have saved the meme application, the meme version number and your own username.
+It is also useful to note that this command only runs from the project directory when meme is added to the system bin. This can be done by editing your `.profile file` to include the following line: `export PATH=/home/username/meme/bin:/home/username/meme/libexec/meme-5.3.3:$PATH` Note that the path will be specific to the location of the saved meme application, the meme version number and your own username.
 
 FIMO produces five output files, by default. The matches are sorted in order of decreasing statistical significance (increasing p-value). The fimo.tsv file was read into `R-4.1.0` and converted into BED file format using the package dplyr, according to the format outlined by the UCSC.
 
@@ -68,7 +68,7 @@ Full script: `ChIP-SeqAnnotation.R`
 
 ## 2.2 Dealing with the metadata
 
-The full annotated files contain a metadata column (inherited from ChIP-Atlas), which has 27 entries detailing everything from the laboratory where the experiment was conducted to the antibody target. It also includes the treatment and control conditions of the experiment, which are important for binding interpretation. Before anything else is done with the data, the metadata needs to be extracted and sorted into its own variables.
+The fully annotated files contain a metadata column (inherited from ChIP-Atlas), which has 27 entries detailing everything from the laboratory where the experiment was conducted to the antibody target. It also includes the treatment and control conditions of the experiment, which are important for binding interpretation. Before anything else is done with the data, the metadata needs to be extracted and sorted into its own variables.
 
 First, the 9th to 14th columns are removed from the files - they contain the variables `geneChr; geneStart; geneEnd; geneLength; geneStr; geneId`. Since there is only one gene of interest in this analysis (*PXDN*) this information is not useful. Next, the metadata column is reorganised so that the `%20` deliminator is removed and replaced with a single space.
 
@@ -105,7 +105,7 @@ The treatment conditions for the samples with missing values were entered into t
 
 Full script: `SortingMetadata.R`
 
-Once the treatment data has been obtained, the samples can be grouped according to treatment conditions. Estrogen and Untreated samples were selected and read into their own files for each cell line and antigen type. These files also underwent formatting changes in preparation for the data comparison in Bedtools.
+Once the treatment data was obtained, the samples could be grouped according to treatment conditions. Oestrogen and Untreated samples were selected and read into their own files for each cell line and antigen type. These files also underwent formatting changes in preparation for the data comparison in Bedtools.
 
 Full script: `GroupData.R`
 
@@ -119,7 +119,7 @@ Full Script: `FimoChip-SeqIntersect.sh`
 
 ## 3.0 Transcription factor binding motif analysis
 
-The data for each antigen was read into seperate files and the aligned ChIP-Seq reads were visualised with the Integrative Genomics Viewer (IGV) to see more clearly where the TFBS and HMs occur in the PXDN gene for each cell line and treatment category. The question that arose was: if an antigen peak has been shown to appear in and around PXDN in a particular cell line, but doesn’t appear for this region in another – is it because the antigen does not occur or because it has not been tested for? To answer this question, the original, genome-wide ChIP-Seq experiment files were scanned for each of the antigens in figure 4, to determine which cell lines (and under what conditions) each antigen experiment had been conducted in. Based on this, select antigens were filtered out for further analysis.
+The data for each antigen was read into seperate files and the aligned ChIP-Seq reads were visualised with the Integrative Genomics Viewer (IGV) to see more clearly where the TFBS and HMs occur in the PXDN gene for each cell line and treatment category. The question that arose was: if an antigen peak has been shown to appear in and around PXDN in a particular cell line, but doesn’t appear for this region in another – is it because the antigen does not occur or because the relevant ChIP-Seq experiment has not been performed yet? To answer this question, the original, genome-wide ChIP-Seq experiment files were scanned for each of the antigens in figure 4, to determine which cell lines (and under what conditions) each antigen experiment had been conducted in. Based on this, select antigens were filtered out for further analysis.
 
 
 ## 3.1 ChIP-Seq FIMO scan 
