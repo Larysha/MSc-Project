@@ -16,6 +16,9 @@ This project aims to understand the mechanism of regulation of the *PXDN* gene i
 
 All vertebrate TFBS motifs (present on both strands, with 25% background letter frequencies) were downloaded from the JASPAR database (MEME version 4 format). The output is stored in the VertebrateMotifs.meme file.
 
+TFBS motifs can be accessed and dowloaded in batch with JASPAR2020 and TFBSTools R/Bioconductor packages as a list of position frequency matrices: https://bioconductor.org/packages/release/data/annotation/vignettes/JASPAR2020/inst/doc/JASPAR2020.html
+
+
 The *PXDN* promoter (5' flanking sequence upstream of *PXDN* on the negative strand) was defined as the region chr2:1748625-1754624 (genome version hg19) and downloaded from Ensembl Release 104 (accessed 5 June 2021), using the "Feature Strand" option. This is saved to the output file PxdnPromoter.fasta
 
 The FIMO tool - accessed through meme-5.3.3 - was used to scan the PXDN promoter for sequences that matched the known TFBS, using the following command:
